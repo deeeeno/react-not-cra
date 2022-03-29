@@ -1,0 +1,21 @@
+{
+  "name": "react-not-cra",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo \"This is build Script\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deeeeno/react-not-cra.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deeeeno/react-not-cra/issues"
+  },
+  "homepage": "https://github.com/deeeeno/react-not-cra#readme"
+}
