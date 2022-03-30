@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "echo \"This is build Script\" && exit 1",
+    "build": "npx webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/deeeeno/react-not-cra/issues"
   },
-  "homepage": "https://github.com/deeeeno/react-not-cra#readme"
+  "homepage": "https://github.com/deeeeno/react-not-cra#readme",
+  "devDependencies": {
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
+  }
 }
