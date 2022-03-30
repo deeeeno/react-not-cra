@@ -7,6 +7,14 @@ module.exports = {
   output:{
     filename:"main.js",
     path:path.resolve('./dist')
+  },
+  module:{
+    rules:[
+      {
+        test:/\.js$/,
+        use:[path.resolve('./src/loader/myloader.js')]
+      }
+    ]
   }
 
 }

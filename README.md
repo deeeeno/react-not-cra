@@ -110,3 +110,44 @@ module.exports={
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 ```
+## Loader
+웹팩은 모든 파일을 모듈로 취급한다. 자바스크립트 모듈 뿐만 아니라 css, image font 등등 모두 모듈로 보기 떄문에 import를 사용한다면 코드 안으로 가져올 수 있다.    
+이런게 가능한 이유는 **로더** 덕분이다. 로더는 타입스크립트를 자바스크립트로 변환해주거나 이미지를 URL로 바꿔주는 등등 여러 역할을 해준다. 자주 쓰이는 로더들도 있지만 그것들을 보기 전에 직접 로더를 만들어보면서 어떻게 동작하는지 알아보자!   
+```
+//src/loader/myloader.js
+module.exports = function myloader(content){
+  console.log(content);
+  console.log('loader hi');
+  return content;
+}
+
+/*
+import {sum} from './math';
+const a = sum(1,2);
+console.log(a);
+loader hi
+export function sum(a,b) {
+  return a+b;
+}
+loader hi
+*/
+
+//webpack.config.js
+...
+module:{
+  rules:[
+    {
+      test:/\.js$/,
+      use:[path.resolve('./src/loader/myloader.js)]
+    }
+  ]
+}
+```
+로더는 content를 인자로 받는 함수이며 이를 통한 또 다른 문자열을 내보낸다. content의 내용을 보니 entry부터 시작해서 import된 것들의 코드 문자열이란 것을 알 수 있다!   
+그렇다면 console.log를 alert로 바꿔서 번들링하는 로더를 만들어보자!
+```
+module.exports = function myloader(content){
+  return content.replace('console.log(','alert(');
+}
+```
+`dist/main.js`를 html에 import해보면 alert가 되는 것을 알 수 있다.

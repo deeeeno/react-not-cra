@@ -16,7 +16,7 @@
   \********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _math__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./math */ \"./src/math.js\");\n\nconst a = (0,_math__WEBPACK_IMPORTED_MODULE_0__.sum)(1,2);\nconsole.log(a);\n\n//# sourceURL=webpack://react-not-cra/./src/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _math__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./math */ \"./src/math.js\");\n\nconst a = (0,_math__WEBPACK_IMPORTED_MODULE_0__.sum)(1,2);\nalert(a);\n\n//# sourceURL=webpack://react-not-cra/./src/app.js?");
 
 /***/ }),
 
