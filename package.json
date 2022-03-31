@@ -19,7 +19,12 @@
   },
   "homepage": "https://github.com/deeeeno/react-not-cra#readme",
   "devDependencies": {
+    "css-loader": "^6.7.1",
+    "style-loader": "^3.3.1",
     "webpack": "^5.70.0",
     "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "file-loader": "^6.2.0"
   }
 }

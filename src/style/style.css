@@ -1,0 +1,11 @@
+.green{
+  width:100px;
+  height:100px;
+  background-color: green;
+}
+
+.what{
+  width:1000px;
+  height:1000px;
+  background-image:url(a.png);
+}
