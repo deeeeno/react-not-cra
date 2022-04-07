@@ -43,11 +43,12 @@ class FileListPlugin {
           //변수로 assets를 가지는데 이는 로더를 통한 번들 결과물이다. 
           //assets은 객체로 번들 파일의 이름을 key로 가진다. 번들의 결과물은 source함수에 저장되어있음.
         
+          /*
           for(const filename of Object.keys(assets)){
             console.log(filename);
             console.log(assets[filename].source());
           }
-          
+          */
           const content =
             '# In this build:\n\n' +
             Object.keys(assets)

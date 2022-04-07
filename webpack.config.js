@@ -1,5 +1,8 @@
 const path = require('path');
 const FileListPlugin = require('./src/plugin/myPlugin')
+const {BannerPlugin} = require('webpack');
+const banner = require('./src/plugin/banner');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   mode:'development',
   entry:{
@@ -31,6 +34,17 @@ module.exports = {
 
     ]
   },
-  plugins: [new FileListPlugin({outputFile:'test.md'})],
+  plugins: [
+    new BannerPlugin(banner()),
+    new HtmlWebpackPlugin({
+      template : './src/template.html',
+      title: 'dino webpack',
+      filename: 'index.html',
+      inject : 'body',
+      
+    })
+  
+  
+  ],
 
 }

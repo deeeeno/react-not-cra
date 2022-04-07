@@ -1,3 +1,10 @@
+/*!
+ * commitVersion : 7be92a6
+ *
+ * Build Date : 2022. 4. 7.
+ * Author : deeeeno
+ *
+ */
 /*
  * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
  * This devtool is neither made for production nor for readable output files.

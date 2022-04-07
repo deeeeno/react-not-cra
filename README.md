@@ -262,10 +262,12 @@ class FileListPlugin {
           //변수로 assets를 가지는데 이는 로더를 통한 번들 결과물이다. 
           //assets은 객체로 번들 파일의 이름을 key로 가진다. 번들의 결과물은 source함수에 저장되어있음.
         
+        /*
           for(const filename of Object.keys(assets)){
             console.log(filename);
             console.log(assets[filename].source());
           }
+          */
           
           const content =
             '# In this build:\n\n' +
@@ -294,3 +296,35 @@ webpack.config.js에 플러그인 설정은 로더와 다르게 객체를 기록
 plugins: [new FileListPlugin({outputFile:'test.md'})],
 ```
 내가 만든 플러그인은 총 두가지 파일을 추가로 만든다. 코드의 마지막 `emitAccess`를 보면 `hi.md, test.md`를 만들게 되는데, 빌드를 진행하고 dist 경로에 생기는지 확인해보자!
+## 자주 사용하는 Plugin
+### BannerPlugin
+결과물 배너에 정보를 추가하게 해주는 플러그인이다. 
+```
+const {BannerPlugin} = require('webpack')
+new BannerPlugin("is it?")
+```
+예시로 커밋 해쉬, 빌드 유저 정보, 날짜를 배너에 만들어보자! 
+```
+//banner.js
+const childProcess = require('child_process')
+module.exports = function banner(){
+  const commit = childProcess.execSync('git rev-parse --short HEAD');
+  const user = childProcess.execSync('git config user.name');
+  const date = new Date().toLocaleDateString();
+  return `commitVersion : ${commit}\nBuild Date : ${date}\nAuthor : ${user}`;
+}
+
+//webpack.config.js
+plugins: [new BannerPlugin(banner())],
+```
+이러면 결과물에 위 정보가 주석으로 나타나는 것을 알 수 있다.
+### HtmlWebpackPlugin
+HtmlWebpackPlugin은 webpack 번들을 제공하는 HTML 파일 생성을 단순화하는 플러그인이다. 매번 컴파일에 파일 명이 해시로 변경되는 경우 유용하게 쓰일 수 있다. html파일의 템플릿을 설정할 수 있고 ejs문법을 통해 데이터를 주입할 수 있다. 자세한 옵션은 [여기](https://github.com/jantimon/html-webpack-plugin#options)를 보자!
+```
+new HtmlWebpackPlugin({
+      template : './src/template.html', //template html 파일
+      title: 'dino webpack',          //타이틀 명 
+      filename: 'index.html',         //output file name
+      inject : 'body',                //번들 Js파일 주입 위치. body or head
+})
+```
