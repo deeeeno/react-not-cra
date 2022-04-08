@@ -17,7 +17,8 @@ module.exports = {
     rules:[
       {
         test:/\.js$/,
-        use:[path.resolve('./src/loader/myloader.js')]
+        exclude:/node_modules/,
+        use:["babel-loader"]
       },/*
       {
         test:/\.png$/,
@@ -41,7 +42,7 @@ module.exports = {
       title: 'dino webpack',
       filename: 'index.html',
       inject : 'body',
-      
+
     })
   
   
